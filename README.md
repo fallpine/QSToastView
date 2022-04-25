@@ -23,3 +23,12 @@ public func show(in view: UIView? = nil, toastType: QSToastType, isMask: Bool = 
 /// 隐藏
 public func dismiss()
 ```
+```
+// 吐司类型
+public enum QSToastType {
+    case success    // 成功
+    case error      // 失败
+    case wait       // 等待
+    case text       // 纯文本
+}
+```
