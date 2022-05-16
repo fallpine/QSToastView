@@ -21,7 +21,8 @@ class ViewController: UIViewController {
         btn.addTarget(self, action: #selector(test), for: .touchUpInside)
         
         let toastView = QSToastTool.share
-        toastView.show(toastType: .wait, isMask: false, interval: nil, isIconRotate: true) {
+        toastView.setAppearance(QSAppearance.init(isMask: false, maskColor: .clear, toastColor: .blue, toastCornerRadius: 15.0, successImgColor: .green, errorImgColor: .red, waitImgColor: .yellow, textColor: .white, textFont: UIFont.systemFont(ofSize: 16.0)))
+        toastView.show(toastType: .wait, interval: nil, isIconRotate: true) {
             print("bbb")
         }
     }

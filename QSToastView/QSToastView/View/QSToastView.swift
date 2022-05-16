@@ -81,15 +81,13 @@ class QSToastView: UIView {
     /// - Parameters:
     ///   - view: 父视图
     ///   - toastType: 吐司类型
-    ///   - isMask: 是否有遮罩
     ///   - interval: 显示时间，nil表示一直显示
     ///   - icon: 图标
     ///   - isIconRotate: 图标是否旋转
     ///   - title: 标题
     ///   - dismiss: 隐藏回调
-    func showToast(in view: UIView?, toastType: QSToastType, isMask: Bool = true, interval: TimeInterval?, icon: String? = nil, isIconRotate: Bool = false, title: String = "", dismiss: (() -> ())?) {
+    func showToast(in view: UIView?, toastType: QSToastType, interval: TimeInterval?, icon: String? = nil, isIconRotate: Bool = false, title: String = "", dismiss: (() -> ())?) {
         // 设置数据
-        appearanceModel.isMask = isMask
         bgView.backgroundColor = appearanceModel.maskColor
         contentView.backgroundColor = appearanceModel.toastColor
         contentView.layer.cornerRadius = appearanceModel.toastCornerRadius

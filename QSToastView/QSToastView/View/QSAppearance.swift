@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class QSAppearance {
+public struct QSAppearance {
     // 是否需要遮罩层，默认 需要
     var isMask: Bool = true
     // 遮罩层颜色，默认 透明
