@@ -61,6 +61,8 @@ public class QSToastTool {
     
     /// 隐藏
     public func dismiss() {
+        guard !toastArray.isEmpty else { return }
+        
         let toast = toastArray.removeFirst()
         toast.dismiss(animated: true)
     }
