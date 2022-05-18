@@ -162,24 +162,28 @@ class QSToastView: UIView {
     
     /// 消失
     func dismiss(animated: Bool) {
-        // 立即执行消失吐司任务
-        if let block = dismissAction {
-            // 取消定时任务
-            QSDispatch.cancle(dismissTask)
-            block()
-        }
+        DispatchQueue.main.async { [weak self] in
+            guard let `self` = self else { return }
+            
+            // 立即执行消失吐司任务
+            if let block = self.dismissAction {
+                // 取消定时任务
+                QSDispatch.cancle(self.dismissTask)
+                block()
+            }
 
-        // 动画时间
-        var duration: TimeInterval = 0.0
-        if animated {
-            duration = 0.3
-        }
-        UIView.animate(withDuration: duration, animations: { [weak self] in
-            self?.alpha = 0.0
-        }) { [weak self] _ in
-            self?.dismissTask = nil
-            self?.dismissAction = nil
-            self?.removeFromSuperview()
+            // 动画时间
+            var duration: TimeInterval = 0.0
+            if animated {
+                duration = 0.3
+            }
+            UIView.animate(withDuration: duration, animations: { [weak self] in
+                self?.alpha = 0.0
+            }) { [weak self] _ in
+                self?.dismissTask = nil
+                self?.dismissAction = nil
+                self?.removeFromSuperview()
+            }
         }
     }
     
