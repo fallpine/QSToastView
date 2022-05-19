@@ -27,8 +27,9 @@ public class QSToastTool {
     ///   - title: 标题
     ///   - dismiss: 隐藏回调
     public func show(in view: UIView? = nil, toastType: QSToastType, interval: TimeInterval?, icon: String? = nil, isIconRotate: Bool = false, title: String = "", dismiss: (() -> ())? = nil) {
-        lock.lock()
         DispatchQueue.main.async { [weak self] in
+            self?.lock.lock()
+            
             guard let `self` = self else { self?.lock.unlock(); return }
             
             if let toast = self.toastArray.last {
