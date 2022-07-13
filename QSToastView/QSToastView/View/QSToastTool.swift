@@ -70,7 +70,7 @@ public class QSToastTool {
             self.lock.lock()
             guard !self.toastArray.isEmpty else { self.lock.unlock(); return }
             
-            let toast = self.toastArray.removeFirst()
+            let toast = self.toastArray.removeLast()
             toast.dismiss(animated: true)
             self.lock.unlock()
         }
